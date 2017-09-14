@@ -26,7 +26,7 @@ public class RedirectController {
 
     @RequestMapping("/shortlink/{link}")
     public ResponseEntity generateLink(@PathVariable("link") String link) throws IOException {
-        URL url = new URL("http://cncopt.com/w/2" + link);
+        URL url = new URL("http://cncopt.com/w/" + link);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Content-Type", "text/plain");
