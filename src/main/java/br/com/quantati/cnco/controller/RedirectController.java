@@ -31,6 +31,7 @@ public class RedirectController {
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Content-Type", "text/plain");
         conn.setDoOutput(true);
+        System.out.println("Link: " + link);
 
         link = "";
 
