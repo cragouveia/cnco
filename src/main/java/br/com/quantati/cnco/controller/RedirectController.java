@@ -23,7 +23,7 @@ public class RedirectController {
         return "index";
     }
 
-    @RequestMapping("/shortlink/{link}")
+    @RequestMapping("/shortlink/{link:.*}")
     public ResponseEntity generateLink(@PathVariable("link") String link) throws IOException {
         URL url = new URL("http://cncopt.com/w/" + link);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
