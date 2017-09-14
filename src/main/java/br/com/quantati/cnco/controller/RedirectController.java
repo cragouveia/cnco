@@ -4,7 +4,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,16 +23,16 @@ public class RedirectController {
         return "index";
     }
 
-    @RequestMapping("/shortlink/{link1}/{link2}")
-    public ResponseEntity generateLink(@PathVariable("link1") String link1, @PathVariable("link2") String link2) throws IOException {
-        URL url = new URL("http://cncopt.com/w/" + link1 + link2);
+    @RequestMapping("/shortlink/{link:.+}")
+    public ResponseEntity generateLink(@PathVariable("link") String link) throws IOException {
+        URL url = new URL("http://cncopt.com/w/" + link);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
         conn.setRequestProperty("Content-Type", "text/plain");
         conn.setDoOutput(true);
-        System.out.println("Link: " + link1 + link2);
+        System.out.println("Link: " + link);
 
-        String link = "";
+        link = "";
 
         Reader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
         for (int c = in.read(); c != -1; c = in.read()) {
