@@ -22,8 +22,20 @@ public class BaseController {
     @ResponseBody
     public synchronized String save(@RequestBody Base base) {
         try {
-            System.out.println(String.format("%s - %s", base.getId(), base.getDescricao()));
             service.save(base);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "OK";
+    }
+
+    @CrossOrigin
+    @RequestMapping(value = "/delete",method = RequestMethod.POST)
+    @ResponseBody
+    public synchronized String delete(@RequestBody Base base) {
+        try {
+            service.delete(base);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -45,7 +57,6 @@ public class BaseController {
             }
         }
         content.append("}");
-        System.out.println(content.toString());
         return content.toString();
     }
 
