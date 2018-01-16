@@ -4,10 +4,7 @@ import br.com.quantati.cnco.domain.Base;
 import br.com.quantati.cnco.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,6 +17,7 @@ public class BaseController {
     @Autowired
     private BaseService service;
 
+    @CrossOrigin
     @RequestMapping(value = "/save",method = RequestMethod.POST)
     @ResponseBody
     public synchronized String save(@RequestBody Base base) {
@@ -33,6 +31,7 @@ public class BaseController {
         return "OK";
     }
 
+    @CrossOrigin
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
     public String list(){
