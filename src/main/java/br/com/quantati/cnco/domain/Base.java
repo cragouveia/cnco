@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Base implements Serializable{
     @Id
     private String id;
-    private String desc;
+    private String descricao;
 
     public String getId() {
         return id;
@@ -18,11 +18,11 @@ public class Base implements Serializable{
         this.id = id;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }

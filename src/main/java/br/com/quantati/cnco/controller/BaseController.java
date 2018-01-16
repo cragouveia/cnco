@@ -22,7 +22,7 @@ public class BaseController {
     @ResponseBody
     public synchronized String save(@RequestBody Base base) {
         try {
-            System.out.println(String.format("%s - %s", base.getId(), base.getDesc()));
+            System.out.println(String.format("%s - %s", base.getId(), base.getDescricao()));
             service.save(base);
         }
         catch (Exception e) {
@@ -39,7 +39,7 @@ public class BaseController {
         StringBuffer content = new StringBuffer();
         content.append("{");
         for (int i = 0; i < bases.size(); i++) {
-            content.append(String.format("\"%s\":\"%s\"", bases.get(i).getId(), bases.get(i).getDesc()));
+            content.append(String.format("\"%s\":\"%s\"", bases.get(i).getId(), bases.get(i).getDescricao()));
             if (i < bases.size() -1) {
                 content.append(",");
             }
