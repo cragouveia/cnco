@@ -46,7 +46,7 @@ public class BaseController {
     @CrossOrigin
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    public String list(){
+    public synchronized String list(){
         List<Base> bases = service.findAll();
         StringBuffer content = new StringBuffer();
         content.append("{");
