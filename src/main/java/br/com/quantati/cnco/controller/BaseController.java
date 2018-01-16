@@ -24,12 +24,13 @@ public class BaseController {
     @ResponseBody
     public synchronized String save(@RequestBody Base base) {
         try {
-            base = service.save(base);
+            System.out.println(String.format("%s - %s", base.getId(), base.getDesc()));
+            service.save(base);
         }
         catch (Exception e) {
             e.printStackTrace();
         }
-        return String.format("{\"id\": %d}", base.getId());
+        return "OK";
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -45,6 +46,7 @@ public class BaseController {
             }
         }
         content.append("}");
+        System.out.println(content.toString());
         return content.toString();
     }
 
